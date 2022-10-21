@@ -7,6 +7,7 @@ const debounce = require('lodash.debounce');
 const DEBOUNCE_DELAY = 300;
 const REPORT_MESSAGE =
   'Too many matches found. Please enter a more specific name.';
+const FAILURE_MESSAGE = 'Oops, there is no country with that name';
 
 const refs = {
   searchField: document.querySelector('#search-box'),
@@ -43,7 +44,7 @@ function onSearchCountry(event) {
       }
     })
     .catch(error => {
-        Notiflix.Notify.failure('Oops, there is no country with that name');
+        Notiflix.Notify.failure(FAILURE_MESSAGE);
         clearCountriesMarkup();
     });
 }
